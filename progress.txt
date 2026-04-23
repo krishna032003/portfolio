@@ -1,3 +1,4 @@
 Task 1: Created `src/lib/utils.ts` with `cn()` utility function using `clsx` and `tailwind-merge`. [DONE]
 Task 2: Created `src/components/ui/Button.tsx` (primary/secondary/ghost variants, sm/md/lg sizes, neon glow + glassmorphic styles) and `src/components/ui/GlassCard.tsx` (backdrop-blur, thin translucent border, optional hover glow). [DONE]
 Task 3: Created `src/components/ui/ThemeToggle.tsx` using `next-themes` (useTheme) and `lucide-react` (Sun/Moon icons) with Framer Motion AnimatePresence rotate+fade+scale animation. Includes hydration-safe mounted guard and accessible aria-labels. Build verified ✓. [DONE]
+Task 4: Created `src/components/Navbar.tsx` — sticky glassmorphic header with smooth-scroll links (About, Projects, Contact), scroll-aware backdrop intensification, ThemeToggle integration, mobile hamburger menu with animated Framer Motion overlay panel, body-scroll lock, and animated underline hover effects. Build verified ✓. [DONE]
