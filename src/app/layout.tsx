@@ -29,6 +29,7 @@ import { Navigation } from "@/components/ui/Navigation";
 import { NeuralBackground } from "@/components/ui/NeuralBackground";
 import { VoiceAssistant } from "@/components/ui/VoiceAssistant";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 export default function RootLayout({
   children,
@@ -54,6 +55,7 @@ export default function RootLayout({
           <Navigation />
           <main className="flex-1 pt-[72px]">{children}</main>
           <SpeedInsights />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
