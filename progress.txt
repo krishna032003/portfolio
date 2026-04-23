@@ -1,0 +1,1 @@
+Task 1: Created `src/lib/utils.ts` with `cn()` utility function using `clsx` and `tailwind-merge`. [DONE]
