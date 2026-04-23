@@ -21,6 +21,14 @@ export const metadata: Metadata = {
 };
 
 
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { Preloader } from "@/components/ui/Preloader";
+import { TerminalOverlay } from "@/components/ui/TerminalOverlay";
+import { Navigation } from "@/components/ui/Navigation";
+import { NeuralBackground } from "@/components/ui/NeuralBackground";
+import { VoiceAssistant } from "@/components/ui/VoiceAssistant";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,9 +40,17 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-500">
         <ThemeProvider attribute="class" defaultTheme="dark">
+          <Preloader />
+          <NeuralBackground />
+          <div className="noise" />
+          <CustomCursor />
+          <ScrollProgress />
           <Navbar />
+          <TerminalOverlay />
+          <VoiceAssistant />
+          <Navigation />
           <main className="flex-1 pt-[72px]">{children}</main>
         </ThemeProvider>
       </body>

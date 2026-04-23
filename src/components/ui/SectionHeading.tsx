@@ -1,50 +1,94 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 interface SectionHeadingProps {
   title: string;
   subtitle?: string;
-  className?: string;
+  label?: string;
+  centered?: boolean;
 }
 
-export const SectionHeading = ({ title, subtitle, className }: SectionHeadingProps) => {
+/**
+ * Premium Section Heading with High-Reliability Reveal.
+ * Fixed visibility by removing strict container-level hiding.
+ */
+export const SectionHeading = ({ 
+  title, 
+  subtitle, 
+  label = "ENGINEERING_LOG",
+  centered = false 
+}: SectionHeadingProps) => {
+  const words = title.split(" ");
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      scale: 0.95
+    },
+    visible: (i: number) => ({ 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { 
+        delay: i * 0.1,
+        duration: 0.8, 
+        ease: [0.22, 1, 0.36, 1] as any 
+      }
+    })
+  };
+
   return (
-    <div className={cn("mb-12 md:mb-20 max-w-2xl text-left", className)}>
-      {title && (
-        <motion.h2
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+    <div className={`mb-16 md:mb-20 ${centered ? "text-center mx-auto" : "text-left"} max-w-4xl`}>
+      <div className="space-y-6">
+        {/* Aesthetic Label Reveal */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ 
-            type: "spring" as const,
-            stiffness: 300,
-            damping: 30,
-            duration: 0.4
-          }}
-          className="text-3xl md:text-5xl font-black text-white tracking-tighter mb-4"
+          custom={0}
+          variants={itemVariants}
+          className={`flex items-center gap-4 ${centered ? "justify-center" : "justify-start"}`}
         >
-          {title}
-        </motion.h2>
-      )}
-      {subtitle && (
-        <motion.p
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ 
-            type: "spring" as const,
-            stiffness: 300,
-            damping: 30,
-            duration: 0.4,
-            delay: 0.1 
-          }}
-          className="text-lg text-gray-400 leading-relaxed"
-        >
-          {subtitle}
-        </motion.p>
-      )}
+          <div className="h-[1px] w-16 bg-accent" />
+          <span className="text-accent font-mono text-[10px] font-black uppercase tracking-[0.6em]">
+            {label}
+          </span>
+        </motion.div>
+        
+        {/* Staggered Word Reveal */}
+        <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-foreground tracking-tighter uppercase italic leading-[0.9] flex flex-wrap gap-x-[0.3em]">
+          {words.map((word, i) => (
+            <motion.span
+              key={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={i + 1}
+              variants={itemVariants}
+              className="inline-block"
+            >
+              {word}
+            </motion.span>
+          ))}
+        </h2>
+        
+        {/* Subtitle Reveal */}
+        {subtitle && (
+          <motion.p 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={words.length + 1}
+            variants={itemVariants}
+            className="text-xl md:text-2xl text-muted font-bold leading-tight max-w-2xl pt-2 border-l-2 border-accent/20 pl-6"
+          >
+            {subtitle}
+          </motion.p>
+        )}
+      </div>
     </div>
   );
 };

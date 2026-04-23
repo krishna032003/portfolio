@@ -12,23 +12,17 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ] as const;
 
-/**
- * Sticky glassmorphic Navbar with smooth-scroll navigation links,
- * a ThemeToggle, and a mobile hamburger menu with animated overlay.
- */
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Track scroll to intensify the glass backdrop after scrolling
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll(); // initial check
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
@@ -52,26 +46,24 @@ export function Navbar() {
         id="main-navbar"
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          // glass background
           "backdrop-blur-lg border-b",
           scrolled
-            ? "bg-[var(--background)]/80 border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.15)]"
+            ? "bg-background/80 border-border/40 shadow-[0_4px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
             : "bg-transparent border-transparent",
         )}
       >
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          {/* Logo / brand */}
           <a
             href="#"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="text-lg font-bold tracking-tight text-[var(--foreground)] hover:text-[var(--accent)] transition-colors duration-300"
+            className="group flex items-center transition-all duration-300 active:scale-95"
           >
-            <span className="text-[var(--accent)]">&lt;</span>
-            KS
-            <span className="text-[var(--accent)]"> /&gt;</span>
+            <span className="text-2xl font-black tracking-tighter text-foreground group-hover:text-accent transition-colors">
+              KS<span className="text-accent group-hover:animate-pulse">.</span>
+            </span>
           </a>
 
           {/* Desktop links */}
@@ -82,11 +74,10 @@ export function Navbar() {
                   href={href}
                   onClick={(e) => handleSmoothScroll(e, href)}
                   className={cn(
-                    "relative text-sm font-medium text-[var(--foreground)]/70",
-                    "transition-colors duration-300 hover:text-[var(--accent)]",
-                    // animated underline on hover
+                    "relative text-xs font-black uppercase tracking-widest text-foreground/70 dark:text-foreground/60",
+                    "transition-colors duration-300 hover:text-accent",
                     "after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0",
-                    "after:bg-[var(--accent)] after:transition-all after:duration-300",
+                    "after:bg-accent after:transition-all after:duration-300",
                     "hover:after:w-full",
                   )}
                 >
@@ -106,9 +97,9 @@ export function Navbar() {
               onClick={() => setMobileOpen((prev) => !prev)}
               className={cn(
                 "md:hidden inline-flex items-center justify-center rounded-xl p-2 cursor-pointer",
-                "text-[var(--foreground)] transition-colors duration-300",
-                "hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2",
-                "focus-visible:ring-[var(--accent)]",
+                "text-foreground transition-colors duration-300",
+                "hover:bg-foreground/[0.05] dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2",
+                "focus-visible:ring-accent",
               )}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
@@ -154,13 +145,11 @@ export function Navbar() {
             transition={{ duration: 0.25 }}
             className="fixed inset-0 z-40 md:hidden"
           >
-            {/* Backdrop */}
             <div
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm"
               onClick={() => setMobileOpen(false)}
             />
 
-            {/* Slide-down panel */}
             <motion.nav
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -168,8 +157,8 @@ export function Navbar() {
               transition={{ duration: 0.3, ease: "easeOut" }}
               className={cn(
                 "relative mt-[72px] mx-4 rounded-2xl",
-                "backdrop-blur-xl bg-[var(--background)]/90 border border-white/[0.08]",
-                "shadow-[0_8px_40px_rgba(0,0,0,0.35)]",
+                "backdrop-blur-xl bg-background/95 dark:bg-background/90 border border-border/40 dark:border-white/[0.08]",
+                "shadow-[0_8px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.35)]",
                 "p-6",
               )}
             >
@@ -185,9 +174,9 @@ export function Navbar() {
                       href={href}
                       onClick={(e) => handleSmoothScroll(e, href)}
                       className={cn(
-                        "block rounded-xl px-4 py-3 text-base font-medium",
-                        "text-[var(--foreground)] transition-colors duration-300",
-                        "hover:bg-white/[0.06] hover:text-[var(--accent)]",
+                        "block rounded-xl px-4 py-3 text-sm font-black uppercase tracking-widest",
+                        "text-foreground transition-colors duration-300",
+                        "hover:bg-foreground/[0.05] dark:hover:bg-white/[0.06] hover:text-accent",
                       )}
                     >
                       {label}

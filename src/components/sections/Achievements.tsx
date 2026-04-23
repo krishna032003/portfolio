@@ -4,7 +4,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { GlassCard } from "@/components/ui/GlassCard";
 import { Award, Trophy, Code } from "lucide-react";
 
 const achievements = [
@@ -31,6 +30,7 @@ export const Achievements = () => {
       <SectionHeading 
         title="Achievements" 
         subtitle="Recognition and milestones in software development and competitive coding."
+        label="RECOGNITION_LOGS"
       />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -42,13 +42,13 @@ export const Achievements = () => {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
           >
-            <GlassCard className="p-8 h-full flex flex-col items-center text-center group hover:bg-white/5 transition-all">
-              <div className="p-4 rounded-2xl bg-[#00f3ff]/5 text-[#00f3ff] mb-6 group-hover:scale-110 transition-transform">
+            <div className="p-8 h-full flex flex-col items-center text-center group bg-card rounded-3xl border border-border shadow-sm transition-all hover:border-accent/30">
+              <div className="p-4 rounded-2xl bg-accent/10 text-accent mb-6 group-hover:scale-110 transition-transform">
                 <item.icon size={32} />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
-            </GlassCard>
+              <h3 className="text-xl font-bold text-foreground mb-3">{item.title}</h3>
+              <p className="text-muted text-sm leading-relaxed font-bold">{item.desc}</p>
+            </div>
           </motion.div>
         ))}
       </div>

@@ -5,6 +5,7 @@ import { Achievements } from "@/components/sections/Achievements";
 import { Leadership } from "@/components/sections/Leadership";
 import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
+import { Footer } from "@/components/ui/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Leadership />
       <Projects />
       <Contact />
+      <Footer />
     </main>
   );
 }
