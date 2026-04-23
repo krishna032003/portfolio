@@ -1,2 +1,3 @@
 Task 1: Created `src/lib/utils.ts` with `cn()` utility function using `clsx` and `tailwind-merge`. [DONE]
 Task 2: Created `src/components/ui/Button.tsx` (primary/secondary/ghost variants, sm/md/lg sizes, neon glow + glassmorphic styles) and `src/components/ui/GlassCard.tsx` (backdrop-blur, thin translucent border, optional hover glow). [DONE]
+Task 3: Created `src/components/ui/ThemeToggle.tsx` using `next-themes` (useTheme) and `lucide-react` (Sun/Moon icons) with Framer Motion AnimatePresence rotate+fade+scale animation. Includes hydration-safe mounted guard and accessible aria-labels. Build verified ✓. [DONE]
