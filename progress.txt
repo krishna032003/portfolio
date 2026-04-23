@@ -1,0 +1,3 @@
+Task 1 (Next.js Setup): COMPLETED
+Task 2 (Dependencies): COMPLETED
+

@@ -1,0 +1,45 @@
+Krishna Sahu
+♂¶ap-¶arkerNoida, UP |♂phone+91 7007313052
+/envel⌢pekrishna032003@gmail.com
+/linkedinkrishnasahu03 |/githubkrishna032003
+♂laptop-codeLeetCode: krishna032003 |/codeGFG: krishnau9ip
+Professional Summary
+Third-year Computer Science undergraduate with hands-on experience inFull Stack Developmentand building scalable web applications.
+Proven ability to develop secure backend features such asRole-Based Access Control (RBAC), RESTful APIs, and data-driven systems
+usingPythonand modern web frameworks. Active competitive programmer with300+ DSA problems solved, eager to contribute to reliable,
+high-performance software systems.
+Education
+Degree Institute Score Year
+B.Tech (CSE) Jaypee Institute of Information Technology, Noida7.84 CGPA2023 – 2027
+Class XII Anil Saraswati Vidya Mandir, Ayodhya87%2022
+Class X Anil Saraswati Vidya Mandir, Ayodhya91%2020
+Technical Skills
+•Languages:C++, Python, JavaScript (ES6+), TypeScript, SQL, HTML5, CSS3
+•Web Frameworks:React.js, Next.js, Node.js, Express.js, Flask, Tailwind CSS, RESTful APIs
+•AI Technologies:Generative AI, LLMs, RAG Architecture, NLP , Google Gemini API, Prompt Engineering
+•Developer Tools:Git, GitHub, Docker, VS Code, Postman, Vercel, MongoDB, Firebase
+•Core CS Subjects:Data Structures & Algorithms, OOPS, DBMS, Operating Systems, Computer Networks
+Project Experience
+1. WanderGuide (AI Travel Planner)|React, Flask, Gemini API/external-link-altDemo Jan 2026
+• Architected a full-stack AI application usingGoogle Gemini APIto generate personalized travel itineraries.
+• Engineered robust RESTful APIs with Flask to handle natural language processing, achieving 95% relevance.
+• Deployed a responsive frontend using React.js and Framer Motion, enhancing user retention by 30%.
+2. Blood Connect (Management System)|Next.js, T ypeScript, MongoDB/external-link-altDemo Oct 2025
+• Developed a scalable blood bank system withRole-Based Access Control (RBAC)to secure patient data.
+• Optimized application performance by 40% using Next.jsServer-Side Rendering (SSR)and Edge Caching.
+• Implemented complex database aggregation pipelines in MongoDB to streamline donor matching logic.
+3. CareCall (Voice AI Assistant)|Python, Flask, NLP/githubCode Mar 2025
+• Built a voice-activated assistant usingNLPlibraries to automate medication reminders for elderly users.
+• Integrated real-time emergency detection workflows, ensuring sub-second response latency in critical scenarios.
+Achievements
+•DSA:Solved300+Data Structures & Algorithms problems; Consistent contest performer.
+•Hackathons:Active Participant inBennovate(Bennett Univ),Innovate 3.0(JIIT), andRide Hack(JIIT).
+•Academic:Consistently maintained strong academic performance; Scored 91% in Class X.
+Certifications
+Stanford University:Code in Place (2025)•Google:Generative AI Study Jams
+Udemy:LLM Engineering & Agents•Infosys Springboard:NLP Specialization
+Job Simulations:Deloitte Australia (Tech) & JP Morgan Chase (Software Engineering)
+Leadership Experience
+Coordinator, Jaypee Youth Club (JYC) 2023 – 2026
+• Orchestrated logistics forSynergy ’25,Converge ’24, andEbulliencefests, managing 500+ attendees.
+• Spearheaded student engagement initiatives, resulting in a 20% increase in club participation year-over-year.
