@@ -118,13 +118,13 @@ export const Hero = () => {
               <div className="space-y-3">
                 <h3 className="text-4xl md:text-5xl font-black text-foreground tracking-tighter uppercase italic">
                   Hi, I&apos;m <span className="text-accent">
-                    <ScrambleText text="Krishna Sahu" duration={2} />
+                    <ScrambleText text="Krishna Sahu" duration={1} delay={1500} />
                   </span>
                 </h3>
                 <h1 className="text-6xl md:text-8xl lg:text-[110px] font-black tracking-tight text-foreground leading-[0.85] max-w-5xl">
                   Engineering <br />
                   <span className="bg-gradient-to-r from-accent to-accent-secondary bg-clip-text text-transparent">
-                    <ScrambleText text="Intelligent" duration={2.5} />
+                    <ScrambleText text="Intelligent" duration={1} delay={1500} />
                   </span> <br />
                   Systems.
                 </h1>
