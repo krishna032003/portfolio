@@ -7,7 +7,7 @@ wave: 1
 # Plan 3.1: Hero Section Implementation
 
 ## Objective
-Implement a high-impact Hero section with bold typography, a dynamic tagline, and a premium "simulated terminal" code block to showcase AI identity, using data from `raw/krishna_context.txt`.
+Implement a high-impact Hero section with bold typography, a dynamic tagline, and a premium "Spotlight" mouse-follow background effect, using data from `raw/krishna_context.txt`.
 
 ## Context
 - .gsd/SPEC.md
@@ -19,6 +19,19 @@ Implement a high-impact Hero section with bold typography, a dynamic tagline, an
 ## Tasks
 
 <task type="auto">
+  <name>Create Spotlight Component</name>
+  <files>src/components/ui/Spotlight.tsx</files>
+  <action>
+    Create a `Spotlight` background component.
+    - Use `framer-motion` to track mouse position.
+    - Render a radial gradient that follows the cursor with a subtle "glow" effect.
+    - Ensure it is positioned absolutely behind section content.
+  </action>
+  <verify>Test-Path src/components/ui/Spotlight.tsx</verify>
+  <done>Spotlight component is functional and follows the mouse.</done>
+</task>
+
+<task type="auto">
   <name>Create Hero Component</name>
   <files>src/components/sections/Hero.tsx</files>
   <action>
@@ -26,16 +39,15 @@ Implement a high-impact Hero section with bold typography, a dynamic tagline, an
     
     Requirements:
     - Use `SectionWrapper` for the base layout.
-    - Title: "Krishna Sahu" in large, bold typography (`text-5xl md:text-8xl`).
-    - Tagline: "Full Stack & AI Software Engineer" with a typewriter animation or neon glow.
-    - Code Block (Agentic Preview): Include a small, stylized terminal window (using `GlassCard` or similar) that displays a JSON-like object representing Krishna's status (e.g., `status: "Building AI futures"`, `location: "Noida, IN"`).
-    - CTA: "View Projects" (primary variant) and "Download CV" (secondary variant).
-    - Animation: Staggered entry for all elements using Framer Motion.
-    
-    AVOID: Hallucinating any personal details not present in `krishna_context.txt`.
+    - Include the `Spotlight` component as a background element.
+    - Layout: Centered or Split-screen (User's choice).
+    - Title: "Krishna Sahu" (`text-5xl md:text-8xl`).
+    - Tagline: "Full Stack & AI Software Engineer" (from context).
+    - Animation: Staggered entrance for all text elements using `framer-motion`.
+    - CTA: "View Projects" and "Download CV".
   </action>
   <verify>Test-Path src/components/sections/Hero.tsx</verify>
-  <done>Hero component is created with high-impact typography and terminal-style preview.</done>
+  <done>Hero component is created with spotlight effect and premium animations.</done>
 </task>
 
 <task type="auto">
@@ -43,15 +55,14 @@ Implement a high-impact Hero section with bold typography, a dynamic tagline, an
   <files>src/app/page.tsx</files>
   <action>
     Import and render the `Hero` component in `src/app/page.tsx`.
-    Clean up `src/app/page.tsx` to remove default Next.js starter content.
-    Ensure `Navbar` is working correctly with the Hero section.
+    Clean up `src/app/page.tsx` boilerplate.
   </action>
   <verify>Get-Content src/app/page.tsx | Select-String "Hero"</verify>
-  <done>Hero section is the primary entry point on the home page.</done>
+  <done>Hero section is active on the home page.</done>
 </task>
 
 ## Success Criteria
-- [ ] Hero section displays Krishna's name and role with premium typography.
-- [ ] Simulated terminal effect adds a "WOW" factor for tech-savvy visitors.
-- [ ] Responsive layout looks great on mobile (stacking) and desktop (split/centered).
+- [ ] Hero section features a smooth, high-performance Spotlight mouse-follow effect.
+- [ ] Typography is bold and matches the premium "AI Engineer" aesthetic.
+- [ ] All entrance animations are implemented with `framer-motion`.
 

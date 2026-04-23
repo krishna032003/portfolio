@@ -7,7 +7,7 @@ wave: 1
 # Plan 3.2: About & Skills Sections
 
 ## Objective
-Implement the "About Me" narrative and a high-impact **Bento Grid** Skills layout using data from `raw/krishna_context.txt`.
+Implement a high-performance About section with a "Metrics" bar and a categorized "Tech Stack" grid, using data from `raw/krishna_context.txt`.
 
 ## Context
 - raw/krishna_context.txt
@@ -19,25 +19,26 @@ Implement the "About Me" narrative and a high-impact **Bento Grid** Skills layou
 ## Tasks
 
 <task type="auto">
-  <name>Create About Section</name>
+  <name>Create About Section with Metrics</name>
   <files>src/components/sections/About.tsx</files>
   <action>
     Build the `About` component in `src/components/sections/`.
     
     Requirements:
     - Use `SectionWrapper` with `id="about"`.
-    - Use `SectionHeading` with "About Me".
-    - Content: Use the full "About Me" text from `krishna_context.txt`.
-    - Layout: Two-column layout on desktop.
-      - Column 1: Bio text with high readability.
-      - Column 2: Stylized `GlassCard` showing Education details (JIIT B.Tech, ASVM Secondary).
+    - Content: Full "About Me" text.
+    - **Metrics Bar**: Implement a stylized horizontal bar or grid of cards highlighting key metrics:
+      - "300+ LeetCode Problems Solved"
+      - "7.84 CGPA @ JIIT"
+      - "Full Stack & AI Expertise"
+    - Use `framer-motion` to animate the numbers or bars on scroll.
   </action>
   <verify>Test-Path src/components/sections/About.tsx</verify>
-  <done>About section is created with accurate biographical and education data.</done>
+  <done>About section is created with an interactive Metrics bar.</done>
 </task>
 
 <task type="auto">
-  <name>Create Skills Bento Grid</name>
+  <name>Create Tech Stack Grid</name>
   <files>src/components/sections/Skills.tsx</files>
   <action>
     Build the `Skills` component in `src/components/sections/`.
@@ -45,27 +46,27 @@ Implement the "About Me" narrative and a high-impact **Bento Grid** Skills layou
     Requirements:
     - Use `SectionWrapper` with `id="skills"`.
     - Use `SectionHeading` with "Technical Expertise".
-    - Layout: Implement a **Bento Grid** (asymmetric grid layout).
-    - Content: Categorize skills (Languages, Frontend, Backend, AI/ML, Tools) from `krishna_context.txt`.
-    - Visuals: Use `GlassCard` for each bento item. Add subtle `lucide-react` icons.
-    - Animation: Use `whileInView` with stagger for the grid items.
+    - Layout: Implement a **Bento Grid** for the "Tech Stack".
+    - Content: Categorize skills (Languages, Frontend, Backend, AI/ML, Tools) into glassmorphic cards.
+    - Animation: Smooth staggered reveal of cards using `framer-motion`.
   </action>
   <verify>Test-Path src/components/sections/Skills.tsx</verify>
-  <done>Skills are categorized and displayed in a premium Bento Grid layout.</done>
+  <done>Skills are displayed in a premium Tech Stack grid.</done>
 </task>
 
 <task type="auto">
   <name>Add Sections to Main Page</name>
   <files>src/app/page.tsx</files>
   <action>
-    Import and render `About` and `Skills` components in `src/app/page.tsx` below the `Hero`.
+    Import and render `About` and `Skills` components in `src/app/page.tsx`.
   </action>
   <verify>Get-Content src/app/page.tsx | Select-String "Skills"</verify>
-  <done>About and Skills sections are integrated into the home page flow.</done>
+  <done>About and Skills sections are integrated with high-performance visuals.</done>
 </task>
 
 ## Success Criteria
-- [ ] About section accurately reflects the content in `krishna_context.txt`.
-- [ ] Skills grid uses a modern Bento layout with glassmorphic elements.
-- [ ] Transitions between sections are smooth and visually consistent.
+- [ ] About section includes a visually distinct Metrics bar with scroll animations.
+- [ ] Skills grid uses a Bento layout with glassmorphic cards and icons.
+- [ ] All elements use `framer-motion` for premium entrance animations.
+
 

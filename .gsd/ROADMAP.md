@@ -14,16 +14,17 @@
 ## Phases
 
 ### Phase 1: Foundation & Theming
-**Status**: ⬜ Not Started
+**Status**: ✅ Completed
 **Objective**: Scaffold the Next.js App Router project, configure Tailwind CSS (with colors #0f1115 and neon electric blue), set up the Dark/Light theme toggle, and create the global layout.
 
 ### Phase 2: Core UI Components
-**Status**: ⬜ Not Started
+**Status**: ✅ Completed
 **Objective**: Build modular, atomic UI components such as Buttons, Glassmorphic Cards, and the Navigation Bar with Framer Motion integration.
 
 ### Phase 3: Sections Implementation (Hero & About)
-**Status**: ⬜ Not Started
+**Status**: ✅ Completed
 **Objective**: Implement the Hero section (bold typography, tagline, CTA) and the About & Skills section using data strictly from `raw/krishna_context.txt`.
+
 
 ### Phase 4: Projects Grid & Contact
 **Status**: ⬜ Not Started
