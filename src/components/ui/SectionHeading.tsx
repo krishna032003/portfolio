@@ -1,31 +1,46 @@
-import { motion } from "framer-motion";
+"use client";
 
-export const SectionHeading = ({ title, subtitle }: { title: string, subtitle?: string }) => {
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+
+interface SectionHeadingProps {
+  title: string;
+  subtitle?: string;
+  className?: string;
+}
+
+export const SectionHeading = ({ title, subtitle, className }: SectionHeadingProps) => {
   return (
-    <div className="mb-16 space-y-4">
-      <div className="flex items-center gap-4">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+    <div className={cn("mb-12 md:mb-20 max-w-2xl text-left", className)}>
+      {title && (
+        <motion.h2
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-extrabold tracking-tight text-white"
+          transition={{ 
+            type: "spring" as const,
+            stiffness: 300,
+            damping: 30,
+            duration: 0.4
+          }}
+          className="text-3xl md:text-5xl font-black text-white tracking-tighter mb-4"
         >
           {title}
         </motion.h2>
-        {/* Animated Neon Accent Line */}
-        <motion.div 
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 0.8, ease: "circOut" }}
-          className="h-[2px] flex-1 bg-gradient-to-r from-[#00f3ff] to-transparent origin-left opacity-50"
-        />
-      </div>
+      )}
       {subtitle && (
-        <motion.p 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-lg text-gray-400 max-w-2xl leading-relaxed"
+        <motion.p
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ 
+            type: "spring" as const,
+            stiffness: 300,
+            damping: 30,
+            duration: 0.4,
+            delay: 0.1 
+          }}
+          className="text-lg text-gray-400 leading-relaxed"
         >
           {subtitle}
         </motion.p>

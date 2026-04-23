@@ -9,33 +9,38 @@ import { Code2, Monitor, Database, Brain, Settings } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "AI & Advanced CS",
+    title: "AI & Intelligence",
     icon: Brain,
-    skills: ["Generative AI", "RAG Architecture", "LangGraph", "NLP", "Gemini API"],
-    className: "md:col-span-2 md:row-span-2 border-[#00f3ff]/20",
+    description: "Building autonomous systems with LLMs and RAG architectures.",
+    skills: ["Generative AI", "RAG", "LangGraph", "NLP", "Gemini API"],
+    className: "md:col-span-2 md:row-span-1",
   },
   {
     title: "Frontend",
     icon: Monitor,
-    skills: ["Next.js", "React.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
-    className: "md:col-span-1 md:row-span-2",
+    description: "High-performance, interactive web interfaces.",
+    skills: ["Next.js", "React", "Tailwind", "Framer Motion", "TS"],
+    className: "md:col-span-1 md:row-span-1",
   },
   {
     title: "Backend",
     icon: Database,
-    skills: ["Node.js", "Express.js", "FastAPI", "Flask", "Docker"],
+    description: "Scalable APIs and distributed system architectures.",
+    skills: ["Node.js", "Express", "FastAPI", "Flask", "Docker"],
     className: "md:col-span-1 md:row-span-1",
   },
   {
     title: "Languages",
     icon: Code2,
-    skills: ["C++", "Python", "JavaScript", "SQL"],
+    description: "Core programming foundations and data structures.",
+    skills: ["C++", "Python", "JavaScript", "TypeScript", "SQL"],
     className: "md:col-span-1 md:row-span-1",
   },
   {
-    title: "Tools & DB",
+    title: "Tools & Infrastructure",
     icon: Settings,
-    skills: ["Git", "Postman", "MongoDB", "Firebase"],
+    description: "Streamlined development and cloud database management.",
+    skills: ["Git", "Postman", "MongoDB", "Firebase", "Vercel"],
     className: "md:col-span-1 md:row-span-1",
   },
 ];
@@ -45,32 +50,47 @@ export const Skills = () => {
     <SectionWrapper id="skills">
       <SectionHeading 
         title="Technical Expertise" 
-        subtitle="Modular, scalable, and data-driven technology stack."
+        subtitle="A modular tech stack focused on scalability and intelligence."
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {skillCategories.map((category, index) => (
           <motion.div
             key={category.title}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
+            transition={{ 
+              type: "spring",
+              stiffness: 300,
+              damping: 30,
+              delay: index * 0.05 
+            }}
             className={category.className}
           >
-            <GlassCard className="h-full p-6 flex flex-col group hover:border-[#00f3ff]/30 transition-all duration-500">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-[#00f3ff]/10 text-[#00f3ff] group-hover:bg-[#00f3ff] group-hover:text-black transition-colors">
+            <GlassCard className="h-full p-8 flex flex-col group relative overflow-hidden">
+              {/* Background Decoration */}
+              <category.icon 
+                size={80} 
+                className="absolute -bottom-4 -right-4 text-foreground/[0.03] dark:text-white/[0.03] group-hover:text-[#00f3ff]/[0.08] transition-colors duration-500" 
+              />
+              
+              <div className="flex items-center gap-4 mb-4 relative z-10">
+                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 dark:bg-white/5 text-[#00f3ff] border border-[var(--card-border)] group-hover:bg-[#00f3ff] group-hover:text-black transition-all duration-300">
                   <category.icon size={20} />
                 </div>
-                <h3 className="text-xl font-bold text-white">{category.title}</h3>
+                <h3 className="text-xl font-bold text-foreground tracking-tight">{category.title}</h3>
               </div>
 
-              <div className="flex flex-wrap gap-2 mt-auto">
+              <p className="text-sm text-muted mb-6 relative z-10 leading-relaxed">
+                {category.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mt-auto relative z-10">
                 {category.skills.map((skill) => (
                   <span 
                     key={skill}
-                    className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 hover:text-[#00f3ff] hover:border-[#00f3ff]/30 transition-colors"
+                    className="px-3 py-1 rounded-lg bg-white/5 dark:bg-white/5 border border-[var(--card-border)] text-[11px] font-mono font-bold text-muted group-hover:text-foreground group-hover:border-[#00f3ff]/30 transition-all"
                   >
                     {skill}
                   </span>

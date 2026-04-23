@@ -8,13 +8,10 @@ interface SectionWrapperProps {
   children: ReactNode;
   className?: string;
   id?: string;
+  fullWidth?: boolean;
 }
 
-/**
- * A wrapper component for sections that provides a fade-in and slide-up 
- * scroll reveal animation using Framer Motion.
- */
-export function SectionWrapper({ children, className, id }: SectionWrapperProps) {
+export function SectionWrapper({ children, className, id, fullWidth = false }: SectionWrapperProps) {
   return (
     <motion.section
       id={id}
@@ -23,11 +20,24 @@ export function SectionWrapper({ children, className, id }: SectionWrapperProps)
       viewport={{ once: true, margin: "-100px" }}
       transition={{ 
         duration: 0.8, 
-        ease: [0.21, 0.47, 0.32, 0.98] // Custom ease for smoother "premium" feel
+        ease: [0.21, 0.47, 0.32, 0.98]
       }}
-      className={cn("relative w-full py-20 md:py-32 px-6 max-w-6xl mx-auto", className)}
+      className={cn("relative w-full py-32 md:py-48", className)}
     >
-      {children}
+      {/* Full-width Neon Accent Line */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00f3ff]/20 to-transparent" />
+
+      {/* 
+          Inner container for content. 
+          The outer section is full-width (allowing background grids to span 100vw),
+          while this inner div keeps the text within a professional max-width.
+      */}
+      <div className={cn(
+        "px-6 relative z-10",
+        fullWidth ? "w-full" : "max-w-7xl mx-auto"
+      )}>
+        {children}
+      </div>
     </motion.section>
   );
 }

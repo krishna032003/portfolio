@@ -15,15 +15,16 @@ const projects = [
   {
     title: "LifeOS",
     description: "Developed an AI-driven command center and productivity system focused on task management and autonomous AI agent workflows.",
-    tech: ["Python", "FastAPI", "LangGraph"],
+    tech: ["Python", "FastAPI", "LangGraph", "LLMs"],
     links: { github: "#", demo: "#" },
   },
   {
     title: "Blood Connect",
     description: "Built a centralized blood bank platform with Role-Based Access Control (RBAC). Optimized performance by 40% using Next.js SSR and Edge Caching.",
-    tech: ["Next.js", "TypeScript", "MongoDB"],
+    tech: ["Next.js", "TypeScript", "MongoDB", "RBAC"],
     links: { github: "#", demo: "#" },
   },
+
   {
     title: "SmartShield.AI",
     description: "Engineered a real-time fraud detection and intelligent analysis system for merchant networks, developed as part of the Imagine Cup.",

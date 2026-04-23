@@ -28,20 +28,19 @@ const GitHubIcon = ({ size = 20 }: { size?: number }) => (
 );
 
 export const ProjectCard = ({ title, description, tech, links }: ProjectCardProps) => {
-
   const cardRef = useRef<HTMLDivElement>(null);
 
   // Mouse position values
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  // Smooth springs for rotation
-  const mouseXSpring = useSpring(x);
-  const mouseYSpring = useSpring(y);
+  // Snappy springs for rotation
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
 
-  // Map mouse position to rotation (-10 to 10 degrees)
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+  // Map mouse position to rotation (-12 to 12 degrees for snappier feel)
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["12deg", "-12deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -53,7 +52,6 @@ export const ProjectCard = ({ title, description, tech, links }: ProjectCardProp
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
 
-    // Normalize values to -0.5 to 0.5
     const xPct = (mouseX / width) - 0.5;
     const yPct = (mouseY / height) - 0.5;
 
@@ -78,21 +76,21 @@ export const ProjectCard = ({ title, description, tech, links }: ProjectCardProp
       }}
       className="relative w-full perspective-1000"
     >
-      <GlassCard className="h-full p-8 flex flex-col group border-[#00f3ff]/10 hover:border-[#00f3ff]/30 transition-colors duration-500">
-        <div style={{ transform: "translateZ(50px)" }} className="flex flex-col h-full">
+      <GlassCard className="h-full p-8 flex flex-col group border-white/5 hover:border-[#00f3ff]/20 transition-colors duration-300">
+        <div style={{ transform: "translateZ(40px)" }} className="flex flex-col h-full text-left">
           {/* Header */}
           <div className="flex justify-between items-start mb-6">
-            <h3 className="text-2xl font-black text-white group-hover:text-[#00f3ff] transition-colors">
+            <h3 className="text-2xl font-black text-white group-hover:text-[#00f3ff] transition-colors leading-tight">
               {title}
             </h3>
             <div className="flex gap-3">
               {links.github && (
-                <a href={links.github} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">
+                <a href={links.github} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors" title="View Source">
                   <GitHubIcon size={20} />
                 </a>
               )}
               {links.demo && (
-                <a href={links.demo} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">
+                <a href={links.demo} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors" title="Live Demo">
                   <ExternalLink size={20} />
                 </a>
               )}
@@ -100,20 +98,23 @@ export const ProjectCard = ({ title, description, tech, links }: ProjectCardProp
           </div>
 
           {/* Description */}
-          <p className="text-gray-400 text-sm leading-relaxed mb-8">
+          <p className="text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
             {description}
           </p>
 
-          {/* Tech Tags */}
-          <div className="flex flex-wrap gap-2 mt-auto">
-            {tech.map((t) => (
-              <span 
-                key={t}
-                className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-md bg-[#00f3ff]/5 text-[#00f3ff] border border-[#00f3ff]/20"
-              >
-                {t}
-              </span>
-            ))}
+          {/* Tech Stack Pills */}
+          <div className="space-y-3">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-gray-600 font-bold">Tech Stack</span>
+            <div className="flex flex-wrap gap-2">
+              {tech.map((t) => (
+                <span 
+                  key={t}
+                  className="px-3 py-1 text-[11px] font-bold rounded-md bg-white/5 text-gray-300 border border-white/10 group-hover:border-[#00f3ff]/30 group-hover:text-white transition-all"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </GlassCard>
